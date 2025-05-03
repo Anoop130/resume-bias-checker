@@ -27,4 +27,4 @@ for docx in "$DIR"/*.docx; do
   libreoffice --headless --convert-to pdf "$docx" --outdir "$outdir"
 done
 
-echo "✅ All .docx files in '$DIR' have been converted to PDF."
+echo "All .docx files in '$DIR' have been converted to PDF."

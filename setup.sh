@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# 1. Create venv (if it doesn't already exist)
-if [ ! -d "venv" ]; then
-  python3 -m venv venv
-  echo "Created virtualenv in ./venv"
-fi
+# 0) Ensure LibreOffice
+command -v libreoffice &>/dev/null || {
+  echo "Installing LibreOffice…"
+  sudo apt-get update && sudo apt-get install -y libreoffice
+}
 
-# 2. Activate it
-#    Note: if you're on Windows, use: source venv/Scripts/activate
+# 1) venv
+[ -d venv ] || python3 -m venv venv
 source venv/bin/activate
 
-# 3. Upgrade pip
+# 2) pip
 pip install --upgrade pip
 
-# 4. Install dependencies
+# 3) deps (pin as needed)
 pip install \
   python-dotenv \
-  pandas \
   PyPDF2 \
   langchain \
-  langchain_openai \
-  openai
+  groq
 
-echo
-echo "✅ All dependencies installed!"
-echo "   To start working, run:  source venv/bin/activate"
+echo "Dependencies ready — activate with: source venv/bin/activate"
