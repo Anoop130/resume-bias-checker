@@ -1,0 +1,9 @@
+# Virtualenv
+venv/
+
+# Data & outputs
+output_texts/
+resumes/*.pdf
+
+# Credentials
+.env
