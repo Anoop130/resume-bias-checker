@@ -1,0 +1,5 @@
+spacy
+nltk
+openai
+tika
+pdfminer.six
